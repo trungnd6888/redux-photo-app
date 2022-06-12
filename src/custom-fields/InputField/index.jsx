@@ -24,7 +24,7 @@ function InpuField(props) {
   const { name, value, onChange, onBlur } = field;
   return (
     <FormGroup>
-      {label && <Label for="titleId">{label}</Label>}
+      {label && <Label for={name}>{label}</Label>}
 
       <Input
         id={name}

@@ -1,12 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Select from 'react-select';
-import Images from 'constants/images';
 import { PHOTO_CATEGORY_OPTIONS } from 'constants/global';
-import { FormGroup, Input, Label, Button } from 'reactstrap';
-import { Formik, Form, FastField } from 'formik';
+import Images from 'constants/images';
 import InputField from 'custom-fields/InputField';
+import RandomPhotoField from 'custom-fields/RandomPhotoField';
 import SelectField from 'custom-fields/SelectField';
+import { FastField, Form, Formik } from 'formik';
+import React from 'react';
+import { Button, FormGroup, Label } from 'reactstrap';
 
 PhotoForm.propTypes = {};
 
@@ -42,8 +41,16 @@ function PhotoForm(props) {
               options={PHOTO_CATEGORY_OPTIONS}
             />
 
-            <FormGroup>
-              <Label for="categoryId">Photo</Label>
+            <FastField
+              name="photo"
+              component={RandomPhotoField}
+              //
+              label="Photo"
+            />
+
+
+            {/* <FormGroup>
+              <Label>Photo</Label>
 
               <div>
                 <Button type="button" outline color="primary">
@@ -58,7 +65,7 @@ function PhotoForm(props) {
                   alt="colorful background"
                 />
               </div>
-            </FormGroup>
+            </FormGroup> */}
 
             <FormGroup>
               <Button color="primary">Add to album</Button>

@@ -42,7 +42,7 @@ function SelectField(props) {
 
     return (
         <FormGroup>
-            {label && <Label for="categoryId">{label}</Label>}
+            {label && <Label for={name}>{label}</Label>}
             <Select
                 id={name}
                 {...field}
