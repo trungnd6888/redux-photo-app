@@ -1,6 +1,7 @@
+import { ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
-import { FormGroup, Label, Input } from 'reactstrap';
-import React from 'react';
+import { FormFeedback, FormGroup, Input, Label } from 'reactstrap';
+import React from 'react'
 
 InpuField.propTypes = {
   field: PropTypes.object.isRequired,
@@ -22,6 +23,9 @@ InpuField.defaultProps = {
 function InpuField(props) {
   const { field, form, type, placeholder, label, disabled } = props;
   const { name, value, onChange, onBlur } = field;
+  const { errors, touched } = form;
+  const showError = errors[name] && touched[name];
+
   return (
     <FormGroup>
       {label && <Label for={name}>{label}</Label>}
@@ -33,7 +37,10 @@ function InpuField(props) {
         type={type}
         disabled={disabled}
         placeholder={placeholder}
+
+        invalid={showError}
       />
+      <ErrorMessage name={name} component={FormFeedback} />
     </FormGroup>
   );
 }
